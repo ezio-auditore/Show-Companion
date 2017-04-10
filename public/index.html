@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Companion</title>
+    <link rel="stylesheet" href="stylesheets/loading-bar.min.css" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css" />
+    <!--<link rel="stylesheet" href="stylesheets/ngprogress.css" type="text/css" />-->
+
+</head>
+
+<body>
+    <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <span class="glyphicon glyphicon-film"></span> Show
+                <strong>Companion</strong></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li data-match-route="/"><a href="/">Home</a></li>
+            <li data-match-route="/add"><a href="/add">Add</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+            <li data-match-route="/login"><a href="/login">Login</a></li>
+            <li data-match-route="/signup"><a href="/signup">Sign up</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" ng-if="currentUser">
+            <li class="navbar-text" ng-bind="currentUser.email"></li>
+            <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+        </ul>
+    </div>
+
+    <div ng-view></div>
+
+    <!--Vendor Script-->
+    <!--<script src="app/vendor/angular.js"></script>
+    <script src="app/vendor/angular-strap.js"></script>
+    <script src="app/vendor/angular-strap.tpl.js"></script>
+    <script src="app/vendor/angular-messages.js"></script>
+    <script src="app/vendor/angular-resource.js"></script>
+    <script src="app/vendor/angular-route.js"></script>
+    <script src="app/vendor/angular-cookies.js"></script>
+    <script src="app/vendor/moment.js"></script>
+    <script type="text/javascript" src="app/vendor/loading-bar.min.js"></script>-->
+
+    <!--User Scripts-->
+<!--    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/controllers/main.js"></script>
+    <script src="app/controllers/add.js"></script>
+    <script type="text/javascript" src="app/services/show.js"></script>
+    <script type="text/javascript" src="app/filters/fromNow.js"></script>
+    <script type="text/javascript" src="app/controllers/detail.js"></script>
+    <script type="text/javascript" src="app/services/auth.js"></script>
+    <script type="text/javascript" src="app/controllers/login.js"></script>
+    <script type="text/javascript" src="app/controllers/signup.js"></script>
+    <script type="text/javascript" src="app/controllers/navbar.js"></script>
+    <script type="text/javascript" src="app/services/suscribe.js"></script>-->
+
+<script type="text/javascript" src="app/app.min.js"></script>
+<script type="text/javascript" src="app/templates.js"></script>
+
+</body>
+
+</html>
