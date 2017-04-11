@@ -158,19 +158,21 @@ app.post('/api/shows', function(req, res, next) {
         url: url,
         encoding: null
       }, function(err, response, body) {
-        //show.poster = 'data:' + response.headers['content-type'] + ';base64, ' + body.toString('base64');
-
-        s3fsImpl.writeFile(show.poster, body)
-          .then(function() {
-            console.log('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-383447803422' + show.poster);
-            show.poster = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-383447803422/' + show.poster;
-            callback(err, show);
-          })
+        show.poster = 'data:' + response.headers['content-type'] + ';base64, ' + body.toString('base64');
+        callback(err, show);
+        console.log('banner waterfall');
+        /*       s3fsImpl.writeFile(show.poster, body)
+                 .then(function() {
+                   console.log('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-383447803422' + show.poster);
+                   show.poster = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-383447803422/' + show.poster;
+                   callback(err, show);
+                 })*/
 
       });
     }
   ], function(err, show) {
     if (err) return next(err);
+    console.log(show);
     show.save(function(err) {
       if (err) {
         if (err.code == 11000) {
